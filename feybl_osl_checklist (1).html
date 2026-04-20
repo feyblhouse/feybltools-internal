@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSL Shift Checklist · FEYBL</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --velvet:#5A0F10;--sparrow:#1C252D;--ghost:#4A5964;--milkglass:#FAEEDD;
+  --golden:#D6985A;--warmwood:#7C5A4C;--rule:#C8B89A;--light:#F7F0E8;
+}
+body{font-family:'Jost',sans-serif;background:#FAEEDD;min-height:100vh;padding:0 0 3rem}
+.header{padding:2rem 1.5rem 1.2rem;border-bottom:1px solid var(--rule)}
+.header-label{font-size:10px;letter-spacing:.18em;color:var(--ghost);text-transform:uppercase;margin-bottom:.5rem}
+.header-title{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--velvet);line-height:1.2}
+.header-sub{font-size:13px;color:var(--ghost);margin-top:.3rem;font-style:italic}
+.progress-bar{height:3px;background:var(--rule);margin:0 1.5rem}
+.progress-fill{height:100%;background:var(--velvet);transition:width .4s ease;width:0%}
+.section{padding:1.2rem 1.5rem 0}
+.section-title{font-size:10px;letter-spacing:.16em;color:var(--ghost);text-transform:uppercase;margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.item{display:flex;align-items:flex-start;gap:12px;padding:.55rem 0;border-bottom:.5px solid rgba(200,184,154,.35);cursor:pointer;transition:background .15s;border-radius:0}
+.item:last-child{border-bottom:none}
+.item:hover{background:rgba(200,184,154,.25);margin:0 -.5rem;padding-left:.5rem;padding-right:.5rem;border-radius:6px}
+.checkbox{width:20px;height:20px;border:1.5px solid var(--rule);border-radius:4px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff}
+.checkbox.checked{background:var(--velvet);border-color:var(--velvet)}
+.checkmark{opacity:0;transition:opacity .15s}
+.checkmark.show{opacity:1}
+.item-text{font-size:14px;color:var(--sparrow);line-height:1.5;transition:color .2s}
+.item-text.checked{color:var(--ghost);text-decoration:line-through;text-decoration-color:var(--rule)}
+.note{font-size:12px;color:var(--velvet);margin-top:.25rem;font-style:italic}
+.flag-item .checkbox{border-color:#c0392b}
+.flag-item .checkbox.checked{background:#c0392b;border-color:#c0392b}
+.sig-section{margin:1.5rem 1.5rem 0;padding:1.2rem;background:var(--light);border-radius:8px;border:1px solid var(--rule)}
+.sig-title{font-size:10px;letter-spacing:.16em;color:var(--ghost);text-transform:uppercase;margin-bottom:1rem}
+.field{margin-bottom:.9rem}
+.field label{display:block;font-size:11px;color:var(--ghost);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+.field input{width:100%;padding:.55rem .75rem;border:1px solid var(--rule);border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;background:#fff;color:var(--sparrow);outline:none;transition:border .2s}
+.field input:focus{border-color:var(--velvet)}
+.field input[readonly]{background:var(--light);color:var(--ghost)}
+.notes-field textarea{width:100%;padding:.55rem .75rem;border:1px solid var(--rule);border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;background:#fff;color:var(--sparrow);outline:none;resize:vertical;min-height:70px;transition:border .2s}
+.notes-field textarea:focus{border-color:var(--velvet)}
+.send-btn{display:block;width:calc(100% - 3rem);margin:1.2rem 1.5rem 0;padding:.85rem;background:var(--velvet);color:var(--milkglass);border:none;border-radius:8px;font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;letter-spacing:.05em;cursor:pointer;transition:background .2s;text-align:center}
+.send-btn:hover{background:#3d0b0c}
+.send-btn:disabled{background:var(--rule);cursor:not-allowed;color:#fff}
+.counter{font-size:11px;color:var(--ghost);text-align:right;padding:.5rem 1.5rem 0}
+.success{display:none;margin:1.5rem 1.5rem 0;padding:1.5rem;background:#f4faf4;border:1px solid #a8d5a8;border-radius:8px;text-align:center}
+.success strong{display:block;font-family:'Libre Baskerville',serif;font-size:17px;margin-bottom:.4rem;color:#1a4a1a}
+.success p{font-size:14px;color:#2d6a2d;line-height:1.6}
+.reset-link{display:inline-block;margin-top:.8rem;font-size:12px;color:var(--velvet);text-decoration:underline;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">FEYBL · Internal · OSL</div>
+  <div class="header-title">Guardian Shift Oversight</div>
+  <div class="header-sub">Complete each section. Sign and submit at end of shift.</div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<div class="section">
+  <div class="section-title">On Arrival</div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Confirmed Guardian is present and clocked in on ConnectTeam by shift start</div></div>
+  </div>
+  <div class="item flag-item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">If late or absent — messaged Guardian directly and notified management thread</div><div class="note">Log in WSP Accountability Log if this occurs</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Confirmed Guardian completed opening sweep — coworking, studios, admin office, supply areas</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Guardian knows the full reset queue for the shift — Google Calendar reviewed if needed</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Mid-Shift</div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Checked in with Guardian via ConnectTeam message or in person</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Verified resets are complete between rentals — confirmed, not assumed</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Any corrections addressed directly with Guardian — not handled silently</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">End of Shift</div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Confirmed Guardian completed closing — lights, locks, laundry, trash, diffusers, admin office secured</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Equipment set-ups properly broken down and put back — all items on chargers in correct places</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Guardian received direct shift feedback from OSL</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Logging</div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Anything to log? Documented in WSP Accountability Log</div><div class="note">Skip if no issues this shift</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Messaged management thread on ConnectTeam if anything notable occurred</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="checkbox"><div class="checkmark"><svg viewBox="0 0 10 7" fill="none" width="10" height="7"><path d="M1 3.5L3.5 6L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div><div class="item-text">Direct messaged Guardian on ConnectTeam if a follow-up was needed</div></div>
+  </div>
+</div>
+
+<div class="counter" id="counter">0 of 14 complete</div>
+
+<div class="sig-section">
+  <div class="sig-title">Sign & Submit</div>
+  <div class="field">
+    <label>Your Name (OSL)</label>
+    <input type="text" id="osl-name" placeholder="First and last name" oninput="updateBtn()">
+  </div>
+  <div class="field">
+    <label>Guardian Overseen This Shift</label>
+    <input type="text" id="guardian-name" placeholder="Guardian's name" oninput="updateBtn()">
+  </div>
+  <div class="field">
+    <label>Date & Time</label>
+    <input type="text" id="datetime" readonly>
+  </div>
+  <div class="field notes-field">
+    <label>Shift Notes (optional)</label>
+    <textarea id="notes" placeholder="Anything worth flagging for management..."></textarea>
+  </div>
+</div>
+
+<button class="send-btn" id="send-btn" onclick="submitForm()" disabled>Complete all sections to submit</button>
+
+<div class="success" id="success">
+  <strong>Shift report sent.</strong>
+  <p>Your completed checklist has been submitted to the management team.<br>Good shift.</p>
+  <span class="reset-link" onclick="resetForm()">Submit another shift</span>
+</div>
+
+<script>
+var total = document.querySelectorAll('.item').length;
+var checked = 0;
+
+function toggle(el) {
+  var box = el.querySelector('.checkbox');
+  var mark = el.querySelector('.checkmark');
+  var text = el.querySelector('.item-text');
+  var isChecked = box.classList.toggle('checked');
+  mark.classList.toggle('show', isChecked);
+  text.classList.toggle('checked', isChecked);
+  checked = document.querySelectorAll('.checkbox.checked').length;
+  document.getElementById('counter').textContent = checked + ' of ' + total + ' complete';
+  document.getElementById('progress').style.width = (checked / total * 100) + '%';
+  updateBtn();
+}
+
+function updateBtn() {
+  var btn = document.getElementById('send-btn');
+  var name = document.getElementById('osl-name').value.trim();
+  var guardian = document.getElementById('guardian-name').value.trim();
+  var allDone = checked === total && name && guardian;
+  btn.disabled = !allDone;
+  if (checked < total) {
+    btn.textContent = 'Complete all sections to submit';
+  } else if (!name || !guardian) {
+    btn.textContent = 'Add your name and Guardian to submit';
+  } else {
+    btn.textContent = 'Sign & Send Shift Report';
+  }
+}
+
+function submitForm() {
+  var name = document.getElementById('osl-name').value.trim();
+  var guardian = document.getElementById('guardian-name').value.trim();
+  var dt = document.getElementById('datetime').value;
+  var notes = document.getElementById('notes').value.trim();
+  var items = document.querySelectorAll('.item');
+  var summary = '';
+  items.forEach(function(item) {
+    var text = item.querySelector('.item-text').textContent;
+    var done = item.querySelector('.checkbox').classList.contains('checked');
+    summary += (done ? '[x] ' : '[ ] ') + text + '\n';
+  });
+  var subject = encodeURIComponent('OSL Shift Report — ' + name + ' — ' + dt);
+  var body = encodeURIComponent(
+    'FEYBL — OSL Guardian Shift Report\n' +
+    '─────────────────────────────\n' +
+    'OSL: ' + name + '\n' +
+    'Guardian Overseen: ' + guardian + '\n' +
+    'Date & Time: ' + dt + '\n\n' +
+    'CHECKLIST\n' +
+    '─────────────────────────────\n' +
+    summary +
+    (notes ? '\nSHIFT NOTES\n─────────────────────────────\n' + notes : '')
+  );
+  window.location.href = 'mailto:admin@feybl.com?subject=' + subject + '&body=' + body;
+  document.getElementById('send-btn').style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+}
+
+function resetForm() {
+  document.querySelectorAll('.checkbox').forEach(function(b) { b.classList.remove('checked'); });
+  document.querySelectorAll('.checkmark').forEach(function(m) { m.classList.remove('show'); });
+  document.querySelectorAll('.item-text').forEach(function(t) { t.classList.remove('checked'); });
+  document.getElementById('osl-name').value = '';
+  document.getElementById('guardian-name').value = '';
+  document.getElementById('notes').value = '';
+  checked = 0;
+  document.getElementById('counter').textContent = '0 of ' + total + ' complete';
+  document.getElementById('progress').style.width = '0%';
+  document.getElementById('send-btn').style.display = 'block';
+  document.getElementById('success').style.display = 'none';
+  updateBtn();
+  setDateTime();
+}
+
+function setDateTime() {
+  var now = new Date();
+  var opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  document.getElementById('datetime').value = now.toLocaleDateString('en-US', opts);
+}
+
+setDateTime();
+updateBtn();
+</script>
+</body>
+</html>
