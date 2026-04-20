@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEYBL · Internal Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --velvet:#5A0F10;--sparrow:#1C252D;--ghost:#4A5964;--milkglass:#FAEEDD;
+  --golden:#D6985A;--warmwood:#7C5A4C;--rule:#C8B89A;--light:#F7F0E8;
+}
+body{font-family:'Jost',sans-serif;background:#FAEEDD;min-height:100vh;padding:0 0 3rem;color:var(--sparrow)}
+.header{padding:3rem 1.5rem 1.5rem;border-bottom:1px solid var(--rule);text-align:center}
+.header-label{font-size:10px;letter-spacing:.18em;color:var(--ghost);text-transform:uppercase;margin-bottom:.6rem}
+.header-title{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;color:var(--velvet);line-height:1.2}
+.header-sub{font-size:13px;color:var(--ghost);margin-top:.5rem;font-style:italic}
+.section{padding:1.5rem 1.5rem 0;max-width:560px;margin:0 auto}
+.section-title{font-size:10px;letter-spacing:.16em;color:var(--ghost);text-transform:uppercase;margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.tool{display:block;padding:1rem 1.2rem;margin-bottom:.6rem;background:#fff;border:1px solid var(--rule);border-radius:8px;text-decoration:none;color:var(--sparrow);transition:all .2s}
+.tool:hover{border-color:var(--velvet);background:var(--light);transform:translateY(-1px);box-shadow:0 2px 8px rgba(90,15,16,.08)}
+.tool-name{font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--velvet);margin-bottom:.25rem}
+.tool-desc{font-size:13px;color:var(--ghost);line-height:1.5}
+.tool-coming{opacity:.5;cursor:not-allowed}
+.tool-coming:hover{border-color:var(--rule);background:#fff;transform:none;box-shadow:none}
+.tag{display:inline-block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:var(--rule);color:var(--sparrow);padding:.15rem .5rem;border-radius:3px;margin-left:.5rem;vertical-align:middle}
+.footer{text-align:center;margin-top:2rem;font-size:11px;color:var(--ghost);letter-spacing:.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">FEYBL · Internal</div>
+  <div class="header-title">Team Tools</div>
+  <div class="header-sub">Internal-use checklists, forms, and resources</div>
+</div>
+
+<div class="section">
+  <div class="section-title">Shift Oversight</div>
+  <a href="osl/" class="tool">
+    <div class="tool-name">OSL Shift Checklist</div>
+    <div class="tool-desc">Guardian shift oversight — complete and submit at end of shift</div>
+  </a>
+</div>
+
+<div class="section">
+  <div class="section-title">Coming Soon</div>
+  <div class="tool tool-coming">
+    <div class="tool-name">Guardian Shift Checklist <span class="tag">Soon</span></div>
+    <div class="tool-desc">Opening, mid-shift, and closing protocol</div>
+  </div>
+</div>
+
+<div class="footer">Feybl · Burbank, CA</div>
+
+</body>
+</html>
